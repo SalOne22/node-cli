@@ -2,7 +2,6 @@ const argv = require('yargs').argv;
 
 const contacts = require('./contacts');
 
-// TODO: рефакторити
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
@@ -26,8 +25,12 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-try {
-  invokeAction(argv);
-} catch (err) {
-  console.error('Something went wrong...', err.message);
+async function run() {
+  try {
+    await invokeAction(argv);
+  } catch (err) {
+    console.error('Something went wrong...', err.message);
+  }
 }
+
+run();
