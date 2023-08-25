@@ -26,4 +26,8 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-invokeAction(argv);
+try {
+  invokeAction(argv);
+} catch (err) {
+  console.error('Something went wrong...', err.message);
+}
